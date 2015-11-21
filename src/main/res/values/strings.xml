@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="title">Message List</string>
+    <string name="action_settings">Settings</string>
+    <string name="send">SEND</string>
+    <string name="inputhint">Please input message</string>
+</resources>
