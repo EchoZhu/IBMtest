@@ -4,6 +4,7 @@
     <color name="black">#000000</color>
     <color name="grey">#f5f5f5</color>
     <color name="blue">#35b7fe</color>
+    <color name="red">#FF0000</color>
     <color name="theme_color">#73498B</color>
     <color name="ibm_color">#0a1d54</color>
 </resources>

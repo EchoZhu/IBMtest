@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -43,6 +44,32 @@ public class HomePage extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
         findView();
+        clickItem();
+    }
+
+    private void clickItem() {
+        lv_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(HomePage.this);
+                final AlertDialog alertDialog=builder.create();
+                alertDialog.show();
+
+                Window window = alertDialog.getWindow();
+                window.setContentView(R.layout.dialog_show_content);
+
+                Button btn_Delete=(Button) window.findViewById(R.id.btn_Delete);
+                TextView tip=(TextView) window.findViewById(R.id.tip);
+                tip.setText(data.get(position).get("msgInput"));
+                btn_Delete.setOnClickListener(new View.OnClickListener() {
+
+                    public void onClick(View arg0) {
+                        // TODO Auto-generated method stub
+                        alertDialog.dismiss();
+                    }
+                });
+            }
+        });
     }
 
 
@@ -81,8 +108,12 @@ public class HomePage extends BaseActivity {
                     }else{
                         latitudeString = "S"+df.format(-latitude);
                     }
+                    if (msgInput.equals("")){
+                        tip.setText("NULL  FROM:"+latitudeString+","+longitudeString);
+                    }else{
+                        tip.setText(msgInput+"  FROM:"+latitudeString+","+longitudeString);
+                    }
 
-                    tip.setText(msgInput+"  FROM:"+latitudeString+","+longitudeString);
                     btn_Accept.setOnClickListener(new View.OnClickListener() {
 
                         public void onClick(View arg0) {

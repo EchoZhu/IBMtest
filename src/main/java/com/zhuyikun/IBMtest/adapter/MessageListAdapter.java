@@ -55,7 +55,13 @@ public class MessageListAdapter extends BaseAdapter{
         }else{
             ViewHolder=(ViewHolder) convertView.getTag();
         }
-        ViewHolder.tv_content.setText(data.get(position).get("msgInput"));
+        String inputContent = data.get(position).get("msgInput");
+        if (inputContent.equals("")){
+            ViewHolder.tv_content.setText("NULL");
+        }else{
+            ViewHolder.tv_content.setText(inputContent);
+        }
+
         ViewHolder.tv_coordinates.setText("FROM:"+data.get(position).get("longitude")+","+data.get(position).get("latitude"));
         return convertView;
     }
