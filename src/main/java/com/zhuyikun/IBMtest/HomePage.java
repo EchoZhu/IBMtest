@@ -80,7 +80,7 @@ public class HomePage extends BaseActivity {
             case R.id.btn_send:
                 getGPS();
                 if (latitude == 0 && longitude == 0){
-                    Toast.makeText(this, "GPS get a wrong position,please try a again", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "GPS is starting,please try again later", Toast.LENGTH_LONG).show();
                 }else{
 
                     final String msgInput = et_input.getText().toString().trim();
